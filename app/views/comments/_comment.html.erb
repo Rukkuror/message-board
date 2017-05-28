@@ -1,0 +1,28 @@
+<div class="comment-jumbotron">
+  <h4><%= comment.content %></h4>
+  <div class="media"> 
+	  <div class="media-left"> 
+	    <%= image_tag(comment.user.avatar.url(:thumb), class: "img-circle") %>
+	  </div> 
+	  <div class="comment-media media-body"> 
+	    <h5 class="media-heading">Commented by <%= comment.user.name%></h5> 
+	  </div> 
+	</div>
+
+  <span>
+    <%= link_to like_post_comment_path(comment.post, comment), disabled: current_user.liked(comment), method: :put, class: "btn btn-primary btn-lg"  do %> 
+    Like
+    <% end %>
+  </span>
+
+  <% if comment.user_id == current_user.id %>
+	  <span><%= link_to "Edit", edit_post_comment_path(comment.post, comment), class: "btn btn-default btn-lg" %></span>
+	  <span><%= link_to "Delete", post_comment_path(comment.post, comment), method: :delete, data: { confirm: "Ahh! Are you sure buddy?" } ,class: "btn btn-danger btn-lg" %></span>
+  <% end %>
+  <ul class="nav nav-pills pull-right" role="tablist">
+	  <li role="presentation" class="active">
+	    <span class="badge"><%= comment.get_upvotes.size%></span>
+	    <span class="glyphicon glyphicon-thumbs-up social-align"><span>
+	  </li>
+	</ul>
+</div>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Message-Board</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <%= link_to "Message-Board", posts_path, class: "navbar-brand" %>
+        </div>
+
+        <ul class="navbar-nav nav">
+          <% if !user_signed_in?  %>  
+            <li><%= link_to "Sign Up", new_user_registration_path %></li>
+            <li><%= link_to "Log In", new_user_session_path %></li>
+          <% end %>
+        </ul>
+        
+        <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %> 
+          <p class="navbar-text navbar-left">Signed in as <%= current_user.name %></p> 
+          <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+        <% end %>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+      <%= yield %>
+    </div>
+  </body>
+</html>

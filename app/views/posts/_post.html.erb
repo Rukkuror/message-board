@@ -1,0 +1,43 @@
+<div class="jumbotron">
+  <div class="dotted-line">
+	  <span>Posted by <%= @post.user.name %> </span>
+	  <span class="pull-right">
+	  	<%= time_ago_in_words(@post.created_at) %> ago
+	  </span>
+  </div>
+  <h1><%= @post.title.titleize %></h1>
+  <p><%= @post.description %></p>
+
+	<div class="media"> 
+	  <div class="media-left"> 
+	    <%= image_tag(@post.user.avatar.url(:thumb), class: "img-circle") %>
+	  </div> 
+	  <div class="media-body"> 
+	    <h4 class="media-heading"><%= @post.user.name%></h4> 
+	  </div> 
+	  <div class="social">
+	    <p class="pull-left">
+	      <%= link_to like_post_path(@post), method: :put, disabled: current_user.liked(@post), class: "btn btn-primary"  do %> Like
+        <% end %>
+      </p>
+      
+      <ul class="nav nav-pills pull-right" role="tablist">
+			  <li role="presentation" class="active">
+			    <span class="badge"><%= @post.get_upvotes.size%></span>
+			    <span class="glyphicon glyphicon-thumbs-up social-align"><span>
+			  </li>
+			  <li role="presentation" class="active">
+			    <span class="badge"><%= @post.comments.size %></span>
+			    <span class="glyphicon glyphicon-pencil social-align"></span>
+			  </li>
+			</ul>
+	  </div>
+	</div>
+	<div class="links btn-group">
+				<%= link_to "Back", posts_path, class: "btn btn-default margin-tb-15" %>
+				<% if @post.user_id == current_user.id %>
+					<%= link_to "Edit Post", edit_post_path(@post), class: "btn btn-primary margin-tb-15" if @post.editable? %>
+					<%= link_to "Delete Post", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger margin-tb-15" %>
+				<% end %>
+			</div>
+</div>

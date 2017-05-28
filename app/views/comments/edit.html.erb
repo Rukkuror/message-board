@@ -1,0 +1,7 @@
+<h1>Edit Comment</h1>
+<div class="input-group">
+  <%= simple_form_for([@post, @comment]) do |f| %>
+    <%= f.input :content, label: false, input_html: {rows: 5, cols: 75}, class:  "form-control" %><br/>
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  <% end %>
+</div>

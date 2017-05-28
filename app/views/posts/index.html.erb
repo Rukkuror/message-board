@@ -1,0 +1,22 @@
+<% if @posts.present? %>
+  <div class="row">
+		<% @posts.each do |post| %>
+		  <div class="col-xs-6 col-md-3">
+		    <div class='post'>
+		      <p class="pull-right"><%= post.get_upvotes.size%> <span class="glyphicon glyphicon-thumbs-up"></span></p>
+		      <p class="pull-right "><%= post.comments.size %><span class="glyphicon glyphicon-pencil"> &nbsp;</span></p>
+		      <h2 class='title'><%= link_to post.title.titleize , post %></h2>
+		      <h5 class="text-left">
+		        <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %>
+		      </h5>	
+		    </div>
+		  </div>
+		<% end %>
+	</div>
+<% else %>
+  No posts yet! hang on...
+<% end %>
+<%= link_to "New Post", new_post_url, class: "btn btn-primary" %>
+<div style="clear:both">
+  <%= paginate @posts, theme: 'twitter-bootstrap-3' %>
+</div>	
