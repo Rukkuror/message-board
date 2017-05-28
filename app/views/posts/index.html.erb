@@ -1,5 +1,14 @@
-<% if @posts.present? %>
-  <div class="row">
+<div class="row">
+  <div class="form-group">
+		<%= form_tag(posts_path, :method => "get", class: "pad-15", id: "search-form") do %>
+		<%= text_field_tag :search, params[:search], placeholder: "Search Posts", class: "pad-3 col-sm-6" %>
+    <%= select_tag :user_id, options_from_collection_for_select(fetch_all_users, 'id', 'name', params[:user_id]), prompt: "Select Author", onchange: "this.form.submit();	", class: "pull-right" %>
+		<%= submit_tag "Search", class: "btn btn-primary" %>
+		<% end %>
+	</div>
+  <br/>
+
+  <% if @posts.present? %>  
 		<% @posts.each do |post| %>
 		  <div class="col-xs-6 col-md-3">
 		    <div class='post'>
@@ -14,9 +23,11 @@
 		<% end %>
 	</div>
 <% else %>
-  No posts yet! hang on...
+  <p class="pad-15">No posts yet! hang on...</p>
 <% end %>
-<%= link_to "New Post", new_post_url, class: "btn btn-primary" %>
-<div style="clear:both">
+<span>
+  <%= link_to "New Post", new_post_url, class: "btn btn-primary" %>
+</span>
+<div class="clear">
   <%= paginate @posts, theme: 'twitter-bootstrap-3' %>
 </div>	

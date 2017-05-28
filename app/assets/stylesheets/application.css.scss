@@ -47,7 +47,9 @@
     border-color: #d6e9c6;
     color: #468847;
     text-align: left;
- }.alert-notice {
+ }
+
+ .alert-notice {
     background-color: #dff0d8;
     border-color: #d6e9c6;
     color: #468847;
@@ -103,6 +105,7 @@ body {
   margin-top: 20px;
   text-decoration: none;
 }
+
 .social-align {
   margin-right: 5px;
   vertical-align: middle;
@@ -126,4 +129,16 @@ body {
 .margin-tb-15 {
   margin-top: 15px;
   margin-bottom: 15px;
+}
+
+.pad-15 {
+  padding: 15px;
+}
+
+.pad-3 {
+  padding: 3px;
+}
+
+.clear {
+  clear:both
 }

@@ -3,9 +3,14 @@ class PostsController < ApplicationController
 	before_action :get_post, only: [:show, :edit, :update, :destroy, :like]
 
   # To show all the posts
-	def index
-		@posts = Post.all.order("created_at DESC").page(params[:page])
-	end
+	
+    def index
+		  if params[:search]
+		    @posts = Post.all.search(params[:search], params[:user_id]).order("created_at DESC").page(params[:page])
+		  else
+		    @posts = Post.all.order('created_at DESC').page(params[:page])
+		  end
+    end
 
   # To get particular post
 	def show
