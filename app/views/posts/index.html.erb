@@ -2,8 +2,9 @@
   <div class="form-group">
 		<%= form_tag(posts_path, :method => "get", class: "pad-15", id: "search-form") do %>
 		<%= text_field_tag :search, params[:search], placeholder: "Search Posts", class: "pad-3 col-sm-6" %>
-    <%= select_tag :user_id, options_from_collection_for_select(fetch_all_users, 'id', 'name', params[:user_id]), prompt: "Select Author", onchange: "this.form.submit();	", class: "pull-right" %>
+    <%= select_tag :user_id, options_from_collection_for_select(fetch_all_users, 'id', 'name', params[:user_id]), prompt: "Select Author", onchange: "this.form.submit();	", class: "pull-right	" %>
 		<%= submit_tag "Search", class: "btn btn-primary" %>
+		<%= link_to "Clear", posts_path, class: "btn btn-default" %>
 		<% end %>
 	</div>
   <br/>

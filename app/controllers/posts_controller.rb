@@ -1,16 +1,21 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
 	before_action :get_post, only: [:show, :edit, :update, :destroy, :like]
+	before_action :remove_params, only: :index
 
-  # To show all the posts
-	
-    def index
-		  if params[:search]
-		    @posts = Post.all.search(params[:search], params[:user_id]).order("created_at DESC").page(params[:page])
-		  else
-		    @posts = Post.all.order('created_at DESC').page(params[:page])
-		  end
-    end
+  # To show all the posts	
+  def index
+  	if params[:search] && params[:user_id]
+  		@posts = Post.search_all(params)
+		elsif params[:search]
+		  @posts = Post.search_post(params)
+		elsif params[:user_id]
+		  @posts = Post.search_user(params)
+		else
+		  @posts = Post.all
+		end	  
+	  @posts = @posts.order("created_at DESC").page(params[:page])
+  end
 
   # To get particular post
 	def show
@@ -67,5 +72,9 @@ class PostsController < ApplicationController
     # To get a particular post
 		def get_post
 			@post = Post.find(params[:id])
-  end
+    end
+
+    def remove_params
+    	params.reject!{|_, v| v.blank?}
+    end
 end
