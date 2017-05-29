@@ -2,8 +2,6 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
-# Use sqlite3 as the database for Active Record
-#gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -24,26 +22,15 @@ gem 'jbuilder', '~> 2.5'
 
 # Devise for authentication
 gem 'devise'
-
 # For Form
 gem 'simple_form'
-
-# For bootstrap
-#gem 'bootstrap-sass', '~> 3.3.6'
-
 # For avatar
 gem "paperclip", "~> 5.0.0"
-
 # For Pagination
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
-
 # For like
 gem 'acts_as_votable', '~> 0.10.0'
-
-# For Angularjs
-gem 'angularjs-rails'
-
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -67,6 +54,7 @@ group :development do
 end
 
 group :production do
+  # For heroku DB
   gem 'pg'
   gem 'rails_12factor'
 end

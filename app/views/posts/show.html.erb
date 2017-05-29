@@ -1,17 +1,13 @@
 <div class="col-md-offset-2">
-	<div class="show-post">
-		<%= render 'post' %>
-
-		<h3 class="comment-section-header">Comments:</h3>
-		<% if @post.comments.present? %>
-		  <p><%= render @post.comments %></p>
+  <div class="show-post">
+    <%= render 'post' %>
+    <h3 class="comment-section-header">Comments:</h3>
+    <% if @post.comments.present? %>
+      <p><%= render @post.comments %></p>
     <% else %>
       No Comments yet. Wanna comment first?
     <% end %>
-		
-		<h3 class="reply-to-msg">Reply to Post:</h3>
-		<%= render 'comments/form' %>
-
-	</div>
+    <h3 class="reply-to-msg">Reply to Post:</h3>
+    <%= render 'comments/form' %>
+  </div>
 </div>
-

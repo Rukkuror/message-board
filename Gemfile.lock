@@ -39,7 +39,6 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     acts_as_votable (0.10.0)
-    angularjs-rails (1.6.2)
     arel (7.1.4)
     bcrypt (3.1.11)
     bindex (0.5.0)
@@ -203,7 +202,6 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_votable (~> 0.10.0)
-  angularjs-rails
   bootstrap-kaminari-views
   byebug
   coffee-rails (~> 4.2)
