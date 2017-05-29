@@ -25,11 +25,12 @@
   <% else %>
     <p class="pad-15">No posts yet! hang on...</p>
   <% end %>
-  <span>
-    <%= link_to "New Post", new_post_url, class: "btn btn-primary" %>
-  </span>
-  <!-- for pagination-->
-  <div class="clear">
-    <%= paginate @posts, theme: 'twitter-bootstrap-3' %>
-  </div>	
 </div>
+<span class="clear">
+  <%= link_to "New Post", new_post_url, class: "btn btn-primary" %>
+</span>
+<!-- for pagination-->
+<div class="clear">
+  <%= paginate @posts, theme: 'twitter-bootstrap-3' %>
+</div>	
+
