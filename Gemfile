@@ -31,6 +31,8 @@ gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 # For like
 gem 'acts_as_votable', '~> 0.10.0'
+# For generate thumbnail
+gem 'gastly'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

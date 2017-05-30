@@ -6,6 +6,11 @@
     </span>
   </div>
   <h1><%= @post.title.titleize %></h1>
+  <h5><%= @post.website_url %></h5>
+  <% if @post.website_url %>
+    <p>Screenshot</p>
+    <p><%= image_tag "#{@post.title}.png", height: '300', width: '500' %></p><br/>
+  <% end %>
   <p><%= @post.description %></p>
 
   <div class="media"> 

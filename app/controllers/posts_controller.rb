@@ -38,9 +38,9 @@ class PostsController < ApplicationController
 
   # To edit a post
   def edit
-    if !@post.editable?
-      redirect_to @post, flash: { alert: "Sorry! You can not edit your post." }
-    end
+    #if !@post.editable?
+     # redirect_to @post, flash: { alert: "Sorry! You can not edit your post." }
+    #end
   end
 
   # To update a particular post
@@ -67,7 +67,7 @@ class PostsController < ApplicationController
   private
   # Strong params for create a post
   def post_params
-    params.require(:post).permit(:title, :description)
+    params.require(:post).permit(:title, :description, :website_url)
   end
 
   # To get a particular post
