@@ -14,6 +14,6 @@ class Post < ApplicationRecord
   end
 
   def update_screenshot
-    Gastly.capture(self.website_url, "app/assets/images/#{self.title}.png") rescue nil
+    Gastly.capture(self.website_url, "app/assets/images/#{self.title.parameterize.underscore}.png") rescue nil
   end
 end
