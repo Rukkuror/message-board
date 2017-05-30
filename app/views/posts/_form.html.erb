@@ -1,7 +1,7 @@
 <div class="input-group form-group">
   <%= simple_form_for @post do |f| %>
-    <%= f.input :title, label: false, placeholder: "Post title",  input_html: {size: 75}, class: "form-control" %><br/>
-    <%= f.input :description, label: false, placeholder: "Post description",  input_html: {rows: 5, cols: 75}, class: "form-control" %><br/>
+    <%= f.input :title, label: false, placeholder: "Post title",  input_html: {size: 75}, class: "form-control", required: true %><br/>
+    <%= f.input :description, label: false, placeholder: "Post description",  input_html: {rows: 5, cols: 75}, class: "form-control", required: true %><br/>
     <%= f.input :website_url, label: false, placeholder: "Website URL(Eg: http://google.com)",  input_html: {size: 75}, class: "form-control" %><br/>
     <%= link_to "Back", posts_path, class: "btn btn-default margin-tb-15" %>
     <%= f.button :submit, class: "btn btn-primary" %>
