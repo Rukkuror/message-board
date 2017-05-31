@@ -38,9 +38,9 @@ class PostsController < ApplicationController
 
   # To edit a post
   def edit
-    #if !@post.editable?
-     # redirect_to @post, flash: { alert: "Sorry! You can not edit your post." }
-    #end
+    if !@post.editable?
+      redirect_to @post, flash: { alert: "Sorry! You can not edit your post." }
+    end
   end
 
   # To update a particular post
